@@ -8,4 +8,4 @@
     JavaScript.
     Async-await
 ## How to run project.
-    git clone
+    git clone https://github.com/sandhya563/request-api-in-js/blob/main/req.js
