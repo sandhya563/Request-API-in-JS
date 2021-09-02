@@ -6,16 +6,9 @@ const axios = require('axios');
 async function GetRequest() {
 
     const response = await axios.get('http://saral.navgurukul.org/api/courses')
-
     const responseData = response.data;
-    //   console.log(`${responseData}`)
-
     let coursesList = (responseData[`availableCourses`]);
-    // console.log(`${coursesList}`);
-
     for (i in coursesList) {
-    //     // let cousre_name = coursesList[i][`name`]
-    //     // let courses_id = coursesList[i][`id`]
         console.log(`${i}  ${coursesList[i]["name"]}`)
     }
     
@@ -30,14 +23,8 @@ async function GetRequest() {
     console.log(`\n`);
 
     const exercise = await axios.get('http://saral.navgurukul.org/api/courses/'+id+'/exercises')
-    // console.log(`${exercise.data}`);
-
     var exercise_name = exercise.data
-    // console.log(`{exercise_name}`);
-
     const exerciseData = (exercise_name["data"])
-    // console.log(`${exerciseData}`);
-
     var list_of_slug=[]
     for (j in exerciseData) {
         console.log(`${j}  ${exerciseData[j]["name"]}`);
@@ -48,16 +35,11 @@ async function GetRequest() {
     console.log(`\n`);
     
     const userSlug = require("readline-sync").question("enter your slug id :-")
-    // console.log(`${useSlug}`)
     const slug_data = (exerciseData[userSlug]["slug"])
     console.log(slug_data)
 
     const slugData = await axios.get('http://saral.navgurukul.org/api/courses/'+id+'/exercise/getBySlug?slug='+slug_data)
-    // console.log(`${slugData}`)
-
     const value = slugData.data
-    // console.log(`${value}`)
-
     const slugcontent = (value["content"])
     console.log(`${slugcontent}`)
 }
